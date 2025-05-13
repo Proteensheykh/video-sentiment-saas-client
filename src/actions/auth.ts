@@ -35,7 +35,7 @@ export async function  registerUser(data: SignupSchema) {
                 password: hashedPassword,
                 apiQuota: {
                     create: {
-                        secretKey: `sa_live_${crypto.randomBytes(24).toString()}`                        
+                        secretKey: `sa_live_${crypto.randomBytes(24).toString("hex")}`                        
                     },
                 },
             }
