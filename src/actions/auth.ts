@@ -3,6 +3,7 @@
 import { hash } from "bcryptjs";
 import { signupSchema, type SignupSchema } from "~/schemas/auth";
 import { db } from "~/server/db";
+import crypto from "crypto";
 
 export async function  registerUser(data: SignupSchema) {
     try {
@@ -31,7 +32,12 @@ export async function  registerUser(data: SignupSchema) {
             data: {
                 name,
                 email,
-                password: hashedPassword
+                password: hashedPassword,
+                apiQuota: {
+                    create: {
+                        secretKey: `sa_live_${crypto.randomBytes(24).toString()}`                        
+                    },
+                },
             }
         })
 
