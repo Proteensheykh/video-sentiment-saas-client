@@ -17,7 +17,7 @@ const {url, key} = await fetch('/api/upload-url', {
 
 // 2. Upload file 
 await fetch(url, {
-  method: 'POST},
+  method: 'POST',
   headers: {'Content-Type': 'video/mp4'},
   body: videoFile,
 });

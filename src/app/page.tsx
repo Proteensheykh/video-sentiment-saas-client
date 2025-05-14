@@ -2,6 +2,7 @@
 
 import CodeExamples from "~/components/client/code-examples";
 import CopyButton from "~/components/client/copy-button";
+import { Inference } from "~/components/client/inference";
 import { SignOutButton } from "~/components/client/signout";
 import { auth } from "~/server/auth";
 import { db } from "~/server/db";
@@ -28,8 +29,12 @@ export default async function HomePage() {
         <SignOutButton />
       </nav>
       <main className="flex min-h-screen w-full flex-col gap-6 p-4 sm:p-10 md:flex-row">
-        <div className="flex h-fit w-full flex-col gap-3 md:w-1/2"></div>
+        {/* Left side */}
+        <Inference quota={{secretKey: quota.secretKey}}/>
+        
         <div className="hidden border-l border-slate-200 md:block"></div>
+        
+        {/* Right side */}
         <div className="flex h-fit w-full flex-col gap-3 md:w-1/2">
           <h2 className="text-lg font-medium text-slate-800">API</h2>
           <div className="mt-3 flex h-fit w-full flex-col rounded-xl bg-gray-100 bg-opacity-70 p-4">
