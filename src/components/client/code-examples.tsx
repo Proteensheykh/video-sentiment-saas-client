@@ -15,7 +15,7 @@ const {url, key} = await fetch('/api/upload-url', {
   body: JSON.stringify({fileType: '.mp4'})
 }).then(res => res.json());
 
-// 2. Upload file (using the URL from previous response)
+// 2. Upload file 
 await fetch(url, {
   method: 'POST},
   headers: {'Content-Type': 'video/mp4'},
@@ -34,7 +34,7 @@ const analysis = await fetch('/api/sentiment-inference', {
     `
 
     const curlCode = `# 1. Get upload URL
-curl -X POST 'https://your-domain.com/api/upload-url' \\
+curl -X POST '/api/upload-url' \\
   -H 'Authorization: Bearer YOUR_API_KEY' \\
   -H 'Content-Type: application/json' \\
   -d '{"fileType": ".mp4"}'
@@ -47,7 +47,7 @@ curl -X POST 'UPLOAD_URL' \\
   --data-binary '@/path/to/your/video.mp4'
 
 # 3. Analyze video
-curl -X POST 'https://your-domain.com/api/sentiment-inference' \\
+curl -X POST '/api/sentiment-inference' \\
   -H 'Authorization: Bearer YOUR_API_KEY' \\
   -H 'Content-Type: application/json' \\
   -d '{"key": "FILE_KEY"}'
