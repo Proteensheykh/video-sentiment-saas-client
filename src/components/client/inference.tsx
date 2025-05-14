@@ -38,54 +38,7 @@ export type Analysis = {
 }
 
 export function Inference({ quota }: InferenceProps) {
-    const [analysis, setAnalysis] = useState<Analysis | null>({
-        analysis: {
-            utterances: [
-                {
-                    start_time: 0,
-                    end_time: 2.5,
-                    text: "I'm really excited about this new project!",
-                    emotions: [
-                        { label: "joy", confidence: 0.85 },
-                        { label: "neutral", confidence: 0.10 },
-                        { label: "suprise", confidence: 0.05 }
-                    ],
-                    sentiments: [
-                        { label: "positive", confidence: 0.90 },
-                        { label: "neutral", confidence: 0.10 }
-                    ]
-                },
-                {
-                    start_time: 2.5,
-                    end_time: 5.0,
-                    text: "But I'm a bit worried about the deadline.",
-                    emotions: [
-                        { label: "fear", confidence: 0.65 },
-                        { label: "neutral", confidence: 0.25 },
-                        { label: "sadness", confidence: 0.10 }
-                    ],
-                    sentiments: [
-                        { label: "negative", confidence: 0.70 },
-                        { label: "neutral", confidence: 0.30 }
-                    ]
-                },
-                {
-                    start_time: 5.0,
-                    end_time: 7.5,
-                    text: "However, I think we can make it work together.",
-                    emotions: [
-                        { label: "neutral", confidence: 0.60 },
-                        { label: "joy", confidence: 0.30 },
-                        { label: "suprise", confidence: 0.10 }
-                    ],
-                    sentiments: [
-                        { label: "positive", confidence: 0.75 },
-                        { label: "neutral", confidence: 0.25 }
-                    ]
-                }
-            ]
-        }
-    })
+    const [analysis, setAnalysis] = useState<Analysis | null>(null)
 
     const getAverageScores = () => {
         if (!analysis?.analysis.utterances.length) return null
